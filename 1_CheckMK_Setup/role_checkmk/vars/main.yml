@@ -1,0 +1,4 @@
+---
+service_name: "checkmk"
+container_name: "checkmk_container"
+image_name: "checkmk/check-mk-raw:2.4.0-daily"

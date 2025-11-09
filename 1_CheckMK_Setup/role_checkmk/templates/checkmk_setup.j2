@@ -1,0 +1,18 @@
+[Unit]
+Description=Checkmk Docker Container
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStartPre=/usr/bin/docker rm -f {{ container_name }} || true
+Restart=always
+ExecStart=/usr/bin/docker run -d --rm \
+    --name {{ container_name }} \
+    -v /opt/omd/sites:/omd/sites \
+    -e CMK_PASSWORD='mypassword' \
+    -e TZ='Europe/Berlin' \
+    -p 8080:5000 \
+    {{ image_name }}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,32 @@
+---
+- name: Instal Docker
+  apt:
+    name: docker.io
+    state: present
+    update_cache: yes
+
+- name: Enable Docker Service
+  service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Create CheckMK folder
+  file:
+    path: /opt/omd/sites
+    state: directory
+    mode: '0755'
+
+- name: Deploy CheckMK Template
+  template:
+    src: checkmk_setup.j2
+    dest: "/etc/systemd/system/{{ service_name }}.service"
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Enable CheckMK Service
+  service:
+    name: "{{ service_name }}.service"
+    state: started
+    enabled: true

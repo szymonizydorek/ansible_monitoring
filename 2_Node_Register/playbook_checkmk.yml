@@ -1,0 +1,6 @@
+---
+- name: CheckMK Node Registration
+  hosts: web02
+  become: yes
+  roles:
+    - role_registration

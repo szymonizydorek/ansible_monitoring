@@ -1,0 +1,6 @@
+---
+- name: CheckMK Deployment with Systemd
+  hosts: web02
+  become: yes
+  roles:
+    - role_checkmk

@@ -1,0 +1,21 @@
+all:
+  children:
+    webservers:
+      hosts:
+        target1_ubuntu:
+          ansible_host: 172.31.21.76
+          ansible_user: ubuntu
+          ansible_ssh_private_key_file: /home/ubuntu/AnsibleMonitor/ssh_keys/target1_ubuntu_MON
+          ansible_python_interpreter: /usr/bin/python3
+
+        target1_ubuntu_old:
+          ansible_host: 172.31.86.8
+          ansible_user: ubuntu
+          ansible_ssh_private_key_file: /home/ubuntu/AnsibleMonitor/ssh_keys/target1_ubuntu_172.31.86.8
+          ansible_python_interpreter: /usr/bin/python3
+
+        web02:
+          ansible_host: 172.31.94.246
+          ansible_user: ubuntu
+          ansible_ssh_private_key_file: /home/ubuntu/AnsibleMasterClass/clientkey_ubu.pem
+          ansible_python_interpreter: /usr/bin/python3.12
